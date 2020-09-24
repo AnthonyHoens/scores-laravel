@@ -20,11 +20,15 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <header>
-        @include('partials.nav')
-    </header>
-    <main>
-        @yield('content')
-    </main>
+    <div>
+        <h1>Premier League 2020</h1>
+    </div>
+
+    <x-standings></x-standings>
+
+    <x-match-played></x-match-played>
+
+    <x-match-create></x-match-create>
 </body>
 </html>
+

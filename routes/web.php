@@ -14,6 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
-Route::get('/team/create', [App\Http\Controllers\TeamController::class, 'create']);
-Route::get('/match/create', [App\Http\Controllers\MatchController::class, 'create']);
+Route::get('/', [App\Http\Controllers\DashboardController::class, 'index']);
+Route::post('/', [App\Http\Controllers\MatchController::class, 'store']);

@@ -15,8 +15,8 @@ class CreateTeamsTable extends Migration
     {
         Schema::create('teams', function (Blueprint $table) {
             $table->id()->autoIncrement();
-            $table->string('name')->default(null);
-            $table->string('slug', 3)->default(null);
+            $table->string('name')->default(null)->unique();
+            $table->string('slug', 3)->default(null)->unique();
             $table->string('file_name')->default(null);
             $table->timestamps();
         });
