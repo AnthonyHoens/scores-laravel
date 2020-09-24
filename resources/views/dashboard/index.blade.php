@@ -28,7 +28,7 @@
 
     <x-match-played></x-match-played>
 
-    <x-match-create></x-match-create>
+    <x-match-create :teams="$teams" ></x-match-create>
 </body>
 </html>
 

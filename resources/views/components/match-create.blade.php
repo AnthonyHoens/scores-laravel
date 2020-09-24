@@ -12,7 +12,7 @@
         <select name="home-team" id="home-team">
             @if($teams)
                 @foreach ($teams as $team)
-                <option value="{{ $team->id }}">{{ $team->name . __("[$team->slug]") }}</option>
+                    <option value="{{ $team->id }}">{{ $team->name . __("[$team->slug]") }}</option>
                 @endforeach
             @endif
         </select>

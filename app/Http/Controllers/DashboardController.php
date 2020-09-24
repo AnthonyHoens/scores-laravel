@@ -10,9 +10,9 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller
 {
     public function index() {
-        $user = User::first();
         $teams = Team::all();
+        $match = Match::find(1);
 
-        return view('dashboard.index', compact('user', 'teams'));
+        return view('dashboard.index', compact('teams'));
     }
 }
