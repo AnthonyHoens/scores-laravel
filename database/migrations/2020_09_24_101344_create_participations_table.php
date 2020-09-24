@@ -14,12 +14,20 @@ class CreateParticipationsTable extends Migration
     public function up()
     {
         Schema::create('participations', function (Blueprint $table) {
-            $table->id()->autoIncrement();
+            $table->id();
             $table->integer('match_id');
-            $table->integer('table_id');
+            $table->integer('team_id');
             $table->tinyInteger('goals');
             $table->boolean('is_home')->default(0);
             $table->timestamps();
+            $table->foreign('match_id')
+                ->references('id')
+                ->on('matchs')
+                ->onDelete('cascade');
+            $table->foreign('team_id')
+                ->references('id')
+                ->on('teams')
+                ->onDelete('cascade');
         });
     }
 
