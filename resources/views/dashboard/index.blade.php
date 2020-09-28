@@ -22,10 +22,20 @@
 <body>
     <div>
         <h1>Premier League 2020</h1>
-        <ul>
-            <li><a href="{{ route('login') }}">Se connecter</a></li>
-            <li><a href="{{ route('register') }}">S'inscrire</a></li>
-        </ul>
+        @guest()
+            <ul>
+                <li><a href="{{ route('login') }}">Se connecter</a></li>
+                <li><a href="{{ route('register') }}">S'inscrire</a></li>
+            </ul>
+        @endguest
+        @auth()
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button>
+                    Se déconnecter
+                </button>
+            </form>
+        @endauth
     </div>
 
     <x-standings></x-standings>
