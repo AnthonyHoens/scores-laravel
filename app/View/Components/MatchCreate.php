@@ -13,9 +13,9 @@ class MatchCreate extends Component
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($teams)
     {
-
+        $this->teams = $teams;
     }
 
     /**

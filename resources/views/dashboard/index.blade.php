@@ -22,13 +22,19 @@
 <body>
     <div>
         <h1>Premier League 2020</h1>
+        <ul>
+            <li><a href="{{ route('login') }}">Se connecter</a></li>
+            <li><a href="{{ route('register') }}">S'inscrire</a></li>
+        </ul>
     </div>
 
     <x-standings></x-standings>
 
-    <x-match-played></x-match-played>
+    <x-match-played :matches="$matches"></x-match-played>
 
-    <x-match-create :teams="$teams" ></x-match-create>
+    @auth()
+        <x-match-create :teams="$teams"></x-match-create>
+    @endauth
 </body>
 </html>
 

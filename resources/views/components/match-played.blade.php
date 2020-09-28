@@ -1,7 +1,7 @@
 <div>
     <section>
         <h2>Matchs joués au {{ \Carbon\Carbon::now('Europe/Brussels')->locale('fr_BE')->isoFormat('dddd DD MMMM YYYY') }}</h2>
-        @if ($matches ?? '')
+        @if ($matches)
             <table>
                 <thead>
                 <tr>
@@ -13,13 +13,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($matches ?? '' as $match)
+                @foreach ($matches as $match)
                     <tr>
-                        <td>{{ $match->match_date->locale('fr')->isoFormat('dddd D MMMM YYYY à H:mm') }}</td>
-                        <td>{{ $match->home_team }}</td>
-                        <td>{{ $match->home_team_goals }}</td>
-                        <td>{{ $match->away_team_goals }}</td>
-                        <td>{{ $match->away_team }}</td>
+                        <td>{{ $match->date }}</td>
+                        <td>{{ $match->teams[0]->name }}</td>
+                        <td>{{ $match->teams[0]->pivot->goals }}</td>
+                        <td>{{ $match->teams[1]->pivot->goals }}</td>
+                        <td>{{ $match->teams[1]->name }}</td>
                     </tr>
                 @endforeach
                 </tbody>

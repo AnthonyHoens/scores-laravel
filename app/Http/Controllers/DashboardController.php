@@ -11,8 +11,8 @@ class DashboardController extends Controller
 {
     public function index() {
         $teams = Team::all();
-        $match = Match::find(1);
+        $matches = Match::with('teams')->get();
 
-        return view('dashboard.index', compact('teams'));
+        return view('dashboard.index', compact('teams', 'matches'));
     }
 }
