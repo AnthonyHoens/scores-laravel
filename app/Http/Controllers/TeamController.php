@@ -29,4 +29,8 @@ class TeamController extends Controller
 
         return redirect('/');
     }
+
+    public function create() {
+        return view('team.create');
+    }
 }

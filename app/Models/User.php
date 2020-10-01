@@ -40,4 +40,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'role_user')->withPivot('role_id');
+    }
+
+    public function getIsAdminAttribute(): bool
+    {
+         return $this->roles->pluck('name')->contains('admin');
+    }
+
+    public function getIsTeamManagerAttribute(): bool
+    {
+        return $this->roles->pluck('name')->contains('team-manager');
+    }
 }

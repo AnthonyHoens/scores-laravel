@@ -5,9 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Match;
 use App\Models\Team;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MatchController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     protected function validateMatch(): void
     {
         request()->validate([
@@ -23,7 +29,12 @@ class MatchController extends Controller
         $this->validateMatch();
 
 
-
         return redirect('/');
+    }
+
+    public function create() {
+        $teams = Team::all();
+
+        return view('match.create', compact('teams'));
     }
 }
