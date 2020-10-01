@@ -31,6 +31,8 @@ class TeamController extends Controller
     }
 
     public function create() {
-        return view('team.create');
+        $teams = Team::orderBy('name')->get();
+
+        return view('team.create', compact('teams'));
     }
 }

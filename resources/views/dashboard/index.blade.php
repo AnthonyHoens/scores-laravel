@@ -8,7 +8,7 @@
     @canany(['add_match', 'add_team'])
         <nav>
             <h2>
-                Navigation d'admin
+                Navigation d'administration
             </h2>
             <ul>
                 @can('add_match')

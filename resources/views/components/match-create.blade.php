@@ -5,6 +5,11 @@
 
         <label for="match-date">Date du match</label>
         <input type="text" id="match-date" name="match-date" placeholder="2020-04-10">
+        @error('match-date')
+            <p>
+                {{ $message }}
+            </p>
+        @enderror
 
 
         <br>
@@ -18,14 +23,21 @@
         </select>
 
 
-        <label for="home-team-unlisted">Équipe non listée&nbsp;?</label>
-        <input type="text" name="home-team-unlisted" id="home-team-unlisted">
+        @can('add_team')
+            <a href="{{ route('create_team') }}">Équipe non listée&nbsp;?</a>
+        @endcan
         <br>
 
 
         <label for="home-team-goals">Goals de l’équipe à domicile</label>
         <input type="text" id="home-team-goals" name="home-team-goals">
         <br>
+        @error('home-team-goals')
+            <p>
+                {{ $message }}
+            </p>
+        @enderror
+
 
 
         <label for="away-team">Équipe visiteuse</label>
@@ -37,15 +49,20 @@
             @endif
         </select>
 
-
-        <label for="away-team-unlisted">Équipe non listée&nbsp;?</label>
-        <input type="text" name="away-team-unlisted" id="away-team-unlisted">
+        @can('add_team')
+            <a href="{{ route('create_team') }}">Équipe non listée&nbsp;?</a>
+        @endcan
         <br>
 
 
         <label for="away-team-goals">Goals de l’équipe visiteuse</label>
         <input type="text" id="away-team-goals" name="away-team-goals">
         <br>
+        @error('away-team-goals')
+            <p>
+                {{ $message }}
+            </p>
+        @enderror
 
 
         <input type="submit" value="Ajouter ce match">

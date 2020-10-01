@@ -33,7 +33,7 @@ class MatchController extends Controller
     }
 
     public function create() {
-        $teams = Team::all();
+        $teams = Team::orderBy('name')->get();
 
         return view('match.create', compact('teams'));
     }

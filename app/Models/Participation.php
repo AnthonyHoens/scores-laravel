@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Participation extends Model
 {
-
+    use HasFactory;
 }

@@ -16,7 +16,7 @@
                 @foreach ($matches as $match)
                     <tr>
                         <td>{{ $match->date }}</td>
-                        <td>{{ $match->teams[0]->name }}</td>
+                        <td>{{ $match->home_team_name }}</td>
                         <td>{{ $match->teams[0]->pivot->goals }}</td>
                         <td>{{ $match->teams[1]->pivot->goals }}</td>
                         <td>{{ $match->teams[1]->name }}</td>

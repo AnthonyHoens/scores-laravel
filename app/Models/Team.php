@@ -9,4 +9,7 @@ class Team extends Model
 {
     use HasFactory;
 
+    public function matches() {
+        return $this->belongsToMany('App\Models\Match', 'participations')->withPivot('goals', 'is_home');
+    }
 }
