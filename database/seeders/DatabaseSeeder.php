@@ -2,9 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Participation;
-use App\Models\Role;
-use App\Models\Team;
+
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -21,7 +19,8 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             RoleUserSeeder::class,
             TeamSeeder::class,
-            Participation::class,
+            ParticipationSeeder::class,
+            TeamStatSeeder::class,
         ]);
     }
 }

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <x-standings></x-standings>
+    <x-standings :teamStats="$teamStats"></x-standings>
 
     <x-match-played :matches="$matches"></x-match-played>
 

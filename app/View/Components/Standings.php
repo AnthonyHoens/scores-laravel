@@ -6,14 +6,15 @@ use Illuminate\View\Component;
 
 class Standings extends Component
 {
+    public $teamStats;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($teamStats)
     {
-        //
+        $this->teamStats = $teamStats;
     }
 
     /**

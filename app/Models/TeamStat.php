@@ -9,9 +9,13 @@ class TeamStat extends Model
 {
     use HasFactory;
 
-    protected $table = 'teams_stats';
+    protected $table = 'team_stats';
 
     public function teams() {
-        return $this->belongsTo(Team::class);
+        return $this->belongsTo(Team::class, 'team_id', 'id');
+    }
+
+    public function getNameAttribute() {
+        return $this->teams->name;
     }
 }

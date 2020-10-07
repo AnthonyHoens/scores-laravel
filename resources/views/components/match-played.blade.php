@@ -1,25 +1,25 @@
-<div>
+<div class="mb-4">
     <section>
         <h2>Matchs joués au {{ \Carbon\Carbon::now('Europe/Brussels')->locale('fr_BE')->isoFormat('dddd DD MMMM YYYY') }}</h2>
         @if ($matches)
-            <table>
+            <table class="w-100">
                 <thead>
                 <tr>
-                    <th>Date</th>
-                    <th>Équipe visitée</th>
-                    <th>Goals de l’équipe visitée</th>
-                    <th>Goals de l’équipe visiteuse</th>
-                    <th>Équipe visiteuse</th>
+                    <th class="pl-3"><a href="{{ route('home_page') }}/?m=date">Date</a></th>
+                    <th><a href="{{ route('home_page') }}/?m=team_id">Équipe visitée</a></th>
+                    <th><a href="{{ route('home_page') }}/?m=goals">Goals de l’équipe visitée</a></th>
+                    <th><a href="{{ route('home_page') }}/?m=goals">Goals de l’équipe visiteuse</a></th>
+                    <th><a href="{{ route('home_page') }}/?m=team_id">Équipe visiteuse</a></th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach ($matches as $match)
-                    <tr>
-                        <td>{{ $match->date }}</td>
+                    <tr class="shadow-sm" style="height: 40px">
+                        <td class="p-3">{{ $match->date }}</td>
                         <td>{{ $match->home_team_name }}</td>
-                        <td>{{ $match->teams[0]->pivot->goals }}</td>
-                        <td>{{ $match->teams[1]->pivot->goals }}</td>
-                        <td>{{ $match->teams[1]->name }}</td>
+                        <td>{{ $match->home_team_goals }}</td>
+                        <td>{{ $match->away_team_goals }}</td>
+                        <td>{{ $match->away_team_name }}</td>
                     </tr>
                 @endforeach
                 </tbody>

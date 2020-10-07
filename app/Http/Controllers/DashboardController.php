@@ -5,14 +5,47 @@ namespace App\Http\Controllers;
 use App\Models\Match;
 use App\Models\Participation;
 use App\Models\Team;
+use App\Models\TeamStat;
 use Illuminate\Support\Facades\Validator;
+use function Sodium\compare;
 
 class DashboardController extends Controller
 {
     public function index() {
-        $matches = Match::with('teams')->get();
+        $teamStatsRequest = request('s');
+        $matchTableRequest = request('m');
 
-        return view('dashboard.index', compact( 'matches'));
+        if ($teamStatsRequest) {
+            $teamStats = TeamStat::with('teams')
+                ->orderBy($teamStatsRequest, 'DESC')
+                ->orderBy('goals_difference', 'DESC')
+                ->get();
+
+            $matches = Match::with('teams')
+                ->orderBy('date', 'ASC')
+                ->get();
+        } elseif ($matchTableRequest) {
+            $matches = Match::with('teams')
+                ->orderBy($matchTableRequest, 'DESC')
+                ->orderBy('date', 'DESC')
+                ->get();
+
+            $teamStats = TeamStat::with('teams')
+                ->orderBy('points', 'DESC')
+                ->orderBy('goals_difference', 'ASC')
+                ->get();
+        } else {
+            $teamStats = TeamStat::with('teams')
+                ->orderBy('points', 'DESC')
+                ->orderBy('goals_difference', 'ASC')
+                ->get();
+
+            $matches = Match::with('teams')
+                ->orderBy('date', 'ASC')
+                ->get();
+        }
+
+        return view('dashboard.index', compact( 'matches', 'teamStats'));
     }
 
     public function store() {

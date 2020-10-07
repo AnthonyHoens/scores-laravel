@@ -2,32 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreTeamRequest;
 use App\Models\Team;
-use Illuminate\Http\Request;
 
 class TeamController extends Controller
 {
-    protected function validateTeam(): void
+    public function __construct()
     {
-        request()->validate([
-            'name' => ['required', 'alpha', 'string', 'unique:name', 'max:255'],
-            'slug' => ['required', 'alpha', 'string', 'unique:slug', 'max:3'],
-            'file_name' => ['required', 'file', 'image', 'string']
-        ]);
+        $this->middleware('auth');
     }
 
-    public function store() {
-        $this->validateTeam();
+
+    public function store(StoreTeamRequest $request) {
+        $validatedData = $request->validated();
 
         $team = new Team();
 
         $team->name = request('name');
-        $team->slug = strtoupper(request('slug'));
-        $team->file_name = request('logo');
+        $team->slug = request('slug');
 
         $team->save();
 
-        return redirect('/');
+        return redirect(route('store_team'));
     }
 
     public function create() {

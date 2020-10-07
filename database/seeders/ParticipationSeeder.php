@@ -22,7 +22,7 @@ class ParticipationSeeder extends Seeder
         foreach ($teams as $team) {
             $homeTeam = $team;
             $awayTeam = $teams[rand(0, count($teams))];
-            while ($awayTeam == $team) {
+            while ($team == $awayTeam) {
                 $awayTeam = $teams[rand(0, count($teams))];
             }
             $match = Match::create([

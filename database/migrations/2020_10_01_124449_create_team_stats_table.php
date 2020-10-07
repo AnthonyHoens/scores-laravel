@@ -16,7 +16,14 @@ class CreateTeamStatsTable extends Migration
         Schema::create('team_stats', function (Blueprint $table) {
             $table->id();
             $table->foreignId('team_id')->constrained();
-            $table->unsignedTinyInteger('match');
+            $table->unsignedTinyInteger('games')->nullable();
+            $table->unsignedTinyInteger('points')->nullable();
+            $table->unsignedTinyInteger('wins')->nullable();
+            $table->unsignedTinyInteger('looses')->nullable();
+            $table->unsignedTinyInteger('draws')->nullable();
+            $table->unsignedTinyInteger('goals_for')->nullable();
+            $table->unsignedTinyInteger('goals_against')->nullable();
+            $table->unsignedTinyInteger('goals_difference')->nullable();
             $table->timestamps();
         });
     }
