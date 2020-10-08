@@ -15,6 +15,10 @@ class TeamStat extends Model
         return $this->belongsTo(Team::class, 'team_id', 'id');
     }
 
+    public function getImageAttribute() {
+        return $this->teams->file_name;
+    }
+
     public function getNameAttribute() {
         return $this->teams->name;
     }

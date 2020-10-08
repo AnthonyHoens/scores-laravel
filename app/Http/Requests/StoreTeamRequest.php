@@ -26,6 +26,7 @@ class StoreTeamRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'unique:teams', 'max:100'],
             'slug' => ['required', 'string', 'unique:teams', 'max:3'],
+            'img' => ['required', 'file'],
         ];
     }
 }

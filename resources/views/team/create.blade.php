@@ -9,7 +9,7 @@
             <h2>
                 Équipe déjà listée
             </h2>
-            <ul>
+            <ul class="list-unstyled">
                 @foreach($teams as $team)
                     <li>
                         @if($team->file_name)
