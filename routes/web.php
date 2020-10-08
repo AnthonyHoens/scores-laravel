@@ -35,6 +35,14 @@ Route::get('/team/{team:slug}', [App\Http\Controllers\TeamController::class, 'sh
     ->name('team_show')
     ->middleware('auth');
 
+Route::put('/team/{team:slug}', [App\Http\Controllers\TeamController::class, 'update'])
+    ->name('team_update')
+    ->middleware('auth');
+
+Route::get('/team/{team:slug}/edit', [App\Http\Controllers\TeamController::class, 'edit'])
+    ->name('team_edit')
+    ->middleware('auth', 'can:update, App\Models\Team');
+
 
 
 Route::post('/match', [App\Http\Controllers\MatchController::class, 'store'])

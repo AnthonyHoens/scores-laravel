@@ -20,6 +20,7 @@ class TeamStatSeeder extends Seeder
         foreach ($teams as $team) {
             $team_goals = 0;
             $against_goals = 0;
+            $goals_difference = 0;
             $wins = 0;
             $looses = 0;
             $draws = 0;
@@ -60,7 +61,7 @@ class TeamStatSeeder extends Seeder
                     $against_goals += $opponent_goals;
                 }
             }
-            $goals_difference = $actual_goals - $opponent_goals;
+            $goals_difference = $team_goals - $against_goals;
             $points = ($wins * 3) + $draws;
             TeamStat::create([
                 'team_id' => $team->id,

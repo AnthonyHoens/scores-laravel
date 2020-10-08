@@ -30,7 +30,7 @@ class TeamPolicy
      */
     public function view(User $user, Team $team)
     {
-        //
+
     }
 
     /**
@@ -51,9 +51,9 @@ class TeamPolicy
      * @param  \App\Models\Team  $team
      * @return mixed
      */
-    public function update(User $user, Team $team)
+    public function update(User $user)
     {
-        //
+        return $user->isAdmin;
     }
 
     /**

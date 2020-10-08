@@ -7,7 +7,9 @@
         {{ $team->name }} <em>{{ $team->slug }}</em>
     </h1>
 
-    <div>
-        <a href="/team/{{ $team->slug }}/edit" class="btn-primary p-2">Modifier l'équipe</a>
-    </div>
+    @can('edit_team')
+        <div>
+            <a href="/team/{{ $team->slug }}/edit" class="btn-primary p-2">Modifier l'équipe</a>
+        </div>
+    @endcan
 </div>

@@ -15,7 +15,7 @@
                         @if($team->file_name)
                             <img src="{{ asset('images/small/'. $team->file_name) }}">
                         @endif
-                        {{ $team->name }} - {{ $team->slug }}
+                            <a href="/team/{{ $team->slug }}">{{ $team->name }} - {{ $team->slug }}</a>
                     </li>
                 @endforeach
             </ul>

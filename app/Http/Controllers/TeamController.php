@@ -48,4 +48,13 @@ class TeamController extends Controller
 
         return view('team.create', compact('teams'));
     }
+
+    public function edit(Team $team) {
+        return view('team.edit', compact('team'));
+    }
+
+    public function update(Team $team) {
+
+        return redirect('team/'. $team->slug);
+    }
 }

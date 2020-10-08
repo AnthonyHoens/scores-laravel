@@ -38,6 +38,11 @@ class AuthServiceProvider extends ServiceProvider
             return $user->isAdmin;
         });
 
+        Gate::define('edit_team', function($user){
+            return $user->isAdmin;
+        }) ;
+
+
         //
     }
 }
