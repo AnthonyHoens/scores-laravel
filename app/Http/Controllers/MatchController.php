@@ -44,6 +44,7 @@ class MatchController extends Controller
         $match->slug = $homeTeamSlug . $awayTeamSlug;
         $match->save();
 
+        event(MatchCreated::class);
 
         return redirect(route('home_page'));
     }

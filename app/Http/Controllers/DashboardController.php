@@ -20,7 +20,6 @@ class DashboardController extends Controller
         $matchOrder = $matchTableRequest ? $matchTableRequest : 'date';
 
         $teamStats = TeamStat::with('teams')
-            ->orderByDesc($teamStatsOrder)
             ->orderByDesc('goals_difference')
             ->get();
 
@@ -28,6 +27,7 @@ class DashboardController extends Controller
             ->get();
 
         $matches = $matches->sortByDesc($matchOrder);
+        $teamStats = $teamStats->sortByDesc($teamStatsOrder);
 
         return view('dashboard.index', compact( 'matches', 'teamStats', 'teamStatsOrder', 'matchOrder'));
     }

@@ -19,6 +19,10 @@ class TeamStat extends Model
         return $this->teams->file_name;
     }
 
+    public function getSlugAttribute() {
+        return $this->teams->slug;
+    }
+
     public function getNameAttribute() {
         return $this->teams->name;
     }

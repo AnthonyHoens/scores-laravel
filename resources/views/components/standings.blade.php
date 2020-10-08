@@ -5,7 +5,7 @@
             <thead>
             <tr>
                 <th scope="col" class="pl-3">
-                    <a href="{{ route('home_page') }}/?s=team_id&m={{$matchOrder}}">Team</a>
+                    <a href="{{ route('home_page') }}/?s=name&m={{$matchOrder}}">Team</a>
                 </th>
                 <th scope="col"><a href="{{ route('home_page') }}/?s=games&m={{$matchOrder}}">Games</a></th>
                 <th scope="col"><a href="{{ route('home_page') }}/?s=points&m={{$matchOrder}}">Points</a></th>
@@ -24,7 +24,7 @@
                             @if($stat->image)
                                 <img src="{{ asset('images/small/'. $stat->image) }}" class="py-2">
                             @endif
-                            {{ $stat->name }}
+                                <a href="/team/{{ $stat->slug }}">{{ $stat->name }}</a>
                         </td>
                         <td>{{ $stat->games }}</td>
                         <td>{{ $stat->points }}</td>

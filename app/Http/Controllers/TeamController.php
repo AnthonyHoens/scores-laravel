@@ -4,40 +4,30 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTeamRequest;
 use App\Models\Team;
+use App\upload\UploadImage;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
 class TeamController extends Controller
 {
+    use UploadImage;
+
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-    private function HandleImage($request, $newName) {
-        if ($request->hasFile('img')) {
-            $file = $request->file('img');
+    public function index() {
+        $teams = Team::orderBy('name', 'ASC')
+            ->get();
 
-            Storage::makeDirectory('/images/small/');
-
-            $path = '/images/small/' . $newName;
-            $resize = Image::make($file)->resize(40, null, function ($constraint) {
-                $constraint->aspectRatio();
-            })->encode();
-            $resize->save(public_path($path));
-
-
-            Storage::makeDirectory('/images/big/');
-
-            $path = '/images/big/' . $newName;
-            $resize = Image::make($file)->resize(150, null, function ($constraint) {
-                $constraint->aspectRatio();
-            })->encode();
-            $resize->save(public_path($path));
-        }
+        return view('team.index', compact('teams'));
     }
 
+    public function show(Team $team) {
+        return view('team.show', compact('team'));
+    }
 
     public function store(StoreTeamRequest $request) {
         $validatedData = $request->validated();
