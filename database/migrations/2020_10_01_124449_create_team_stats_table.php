@@ -23,7 +23,7 @@ class CreateTeamStatsTable extends Migration
             $table->unsignedTinyInteger('draws')->nullable();
             $table->unsignedTinyInteger('goals_for')->nullable();
             $table->unsignedTinyInteger('goals_against')->nullable();
-            $table->unsignedTinyInteger('goals_difference')->nullable();
+            $table->tinyInteger('goals_difference')->nullable();
             $table->timestamps();
         });
     }

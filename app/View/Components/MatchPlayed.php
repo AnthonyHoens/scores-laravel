@@ -7,15 +7,17 @@ use Illuminate\View\Component;
 class MatchPlayed extends Component
 {
     public $matches;
+    public $teamStatsOrder;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($matches)
+    public function __construct($matches, $teamStatsOrder)
     {
         $this->matches = $matches;
+        $this->teamStatsOrder = $teamStatsOrder;
     }
 
     /**

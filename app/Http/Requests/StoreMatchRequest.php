@@ -13,7 +13,7 @@ class StoreMatchRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class StoreMatchRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'match-date' => ['required'],
+            'home-team' => ['required'],
+            'home-team-goals' => ['required', 'string'],
+            'away-team' => ['required'],
+            'away-team-goals' => ['required', 'string'],
         ];
     }
 }

@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <x-standings :teamStats="$teamStats"></x-standings>
+    <x-standings :teamStats="$teamStats" :matchOrder="$matchOrder"></x-standings>
 
-    <x-match-played :matches="$matches"></x-match-played>
+    <x-match-played :matches="$matches" :teamStatsOrder="$teamStatsOrder"></x-match-played>
 
     @canany(['add_match', 'add_team'])
         <nav>

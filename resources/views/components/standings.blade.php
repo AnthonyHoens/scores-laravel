@@ -4,15 +4,15 @@
         <table class="w-100">
             <thead>
             <tr>
-                <th scope="col" class="pl-3"><a href="{{ route('home_page') }}/?s=team_id">Team</a></th>
-                <th scope="col"><a href="{{ route('home_page') }}/?s=games">Games</a></th>
-                <th scope="col"><a href="{{ route('home_page') }}/?s=points">Points</a></th>
-                <th scope="col"><a href="{{ route('home_page') }}/?s=wins">Wins</a></th>
-                <th scope="col"><a href="{{ route('home_page') }}/?s=looses">Looses</a></th>
-                <th scope="col"><a href="{{ route('home_page') }}/?s=draws">Draws</a></th>
-                <th scope="col"><a href="{{ route('home_page') }}/?s=goals_for">Goals For</a></th>
-                <th scope="col"><a href="{{ route('home_page') }}/?s=goals_against">Goals Against</a></th>
-                <th scope="col"><a href="{{ route('home_page') }}/?s=goals_difference">Goals Difference</a></th>
+                <th scope="col" class="pl-3"><a href="{{ route('home_page') }}/?s=team_id&m={{$matchOrder}}">Team</a></th>
+                <th scope="col"><a href="{{ route('home_page') }}/?s=games&m={{$matchOrder}}">Games</a></th>
+                <th scope="col"><a href="{{ route('home_page') }}/?s=points&m={{$matchOrder}}">Points</a></th>
+                <th scope="col"><a href="{{ route('home_page') }}/?s=wins&m={{$matchOrder}}">Wins</a></th>
+                <th scope="col"><a href="{{ route('home_page') }}/?s=looses&m={{$matchOrder}}">Looses</a></th>
+                <th scope="col"><a href="{{ route('home_page') }}/?s=draws&m={{$matchOrder}}">Draws</a></th>
+                <th scope="col"><a href="{{ route('home_page') }}/?s=goals_for&m={{$matchOrder}}">Goals For</a></th>
+                <th scope="col"><a href="{{ route('home_page') }}/?s=goals_against&m={{$matchOrder}}">Goals Against</a></th>
+                <th scope="col"><a href="{{ route('home_page') }}/?s=goals_difference&m={{$matchOrder}}">Goals Difference</a></th>
             </tr>
             </thead>
             <tbody>

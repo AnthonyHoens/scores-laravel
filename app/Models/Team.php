@@ -8,12 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Team extends Model
 {
     use HasFactory;
-    protected $table = 'teams';
 
+    protected $table = 'teams';
     protected $fillable = ['name', 'slug'];
 
     public function teamstat() {
-        return $this->belongsTo(TeamStat::class);
+        return $this->belongsTo(TeamStat::class, 'team_id', 'id', 'team_stats');
     }
 
     public function matches() {

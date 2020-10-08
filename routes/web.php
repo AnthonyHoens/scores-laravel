@@ -29,7 +29,9 @@ Route::post('/match', [App\Http\Controllers\MatchController::class, 'store'])
     ->name('store_match')
     ->middleware('auth');
 
-Route::post('/team', [\App\Http\Controllers\TeamController::class, 'store']);
+Route::post('/team', [\App\Http\Controllers\TeamController::class, 'store'])
+    ->name('store_team')
+    ->middleware('auth');
 
 
 

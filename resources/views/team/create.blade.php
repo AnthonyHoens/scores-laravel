@@ -12,6 +12,9 @@
             <ul>
                 @foreach($teams as $team)
                     <li>
+                        @if($team->file_name)
+                            <img src="{{ asset('images/small/'. $team->file_name) }}">
+                        @endif
                         {{ $team->name }} - {{ $team->slug }}
                     </li>
                 @endforeach

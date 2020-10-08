@@ -5,11 +5,11 @@
             <table class="w-100">
                 <thead>
                 <tr>
-                    <th class="pl-3"><a href="{{ route('home_page') }}/?m=date">Date</a></th>
-                    <th><a href="{{ route('home_page') }}/?m=team_id">Équipe visitée</a></th>
-                    <th><a href="{{ route('home_page') }}/?m=goals">Goals de l’équipe visitée</a></th>
-                    <th><a href="{{ route('home_page') }}/?m=goals">Goals de l’équipe visiteuse</a></th>
-                    <th><a href="{{ route('home_page') }}/?m=team_id">Équipe visiteuse</a></th>
+                    <th class="pl-3"><a href="{{ route('home_page') }}/?m=date&s={{$teamStatsOrder}}">Date</a></th>
+                    <th><a href="{{ route('home_page') }}/?m=home_team_name&s={{$teamStatsOrder}}">Équipe visitée</a></th>
+                    <th><a href="{{ route('home_page') }}/?m=home_team_goals&s={{$teamStatsOrder}}">Goals de l’équipe visitée</a></th>
+                    <th><a href="{{ route('home_page') }}/?m=away_team_goals&s={{$teamStatsOrder}}">Goals de l’équipe visiteuse</a></th>
+                    <th><a href="{{ route('home_page') }}/?m=away_team_name&s={{$teamStatsOrder}}">Équipe visiteuse</a></th>
                 </tr>
                 </thead>
                 <tbody>

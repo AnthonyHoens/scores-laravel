@@ -1,10 +1,10 @@
-<form action="/team" method="POST" class="w-75 d-inline-block">
+<form action="/team" method="POST" class="w-75 d-inline-block" enctype="multipart/form-data">
     @csrf
 
     <label for="name" class="d-block mb-1">Nom de l'équipe</label>
     <input type="text" id="name" name="name" class="mb-3 w-100" value="{{ old('name') }}">
     @error('name')
-        <p>
+        <p class="alert-danger">
             {{ $message }}
         </p>
     @enderror
@@ -13,7 +13,7 @@
     <label for="slug" class="d-block mb-1">Slug de l'équipe ( en 3 Lettres )</label>
     <input type="text" id="slug" name="slug" class="mb-3 w-100" value="{{ old('slug') }}">
     @error('slug')
-    <p>
+    <p class="alert-danger">
         {{ $message }}
     </p>
     @enderror
@@ -22,7 +22,7 @@
     <label for="img" class="d-inline-block mb-3">Image de l'équipe</label>
     <input type="file" src="img" name="img" class="d-inline-block mb-3">
     @error('img')
-    <p>
+    <p class="alert-danger">
         {{ $message }}
     </p>
     @enderror

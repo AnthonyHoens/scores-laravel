@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\MatchCreated;
+use App\Http\Requests\StoreMatchRequest;
 use App\Models\Match;
 use App\Models\Participation;
 use App\Models\Team;
@@ -15,33 +17,33 @@ class MatchController extends Controller
         $this->middleware('auth');
     }
 
-    public function store(Request $request) {
-        $request->validate([
-            'match-date' => ['required'],
-            'home-team' => ['required'],
-            'home-team-goals' => ['required', 'string'],
-            'away-team' => ['required'],
-            'away-team-goals' => ['required', 'string'],
-        ]);
+    public function store(StoreMatchRequest $request) {
+        $validatedData = $request->validated();
 
-        $match = Match::create([
-            'date' => $request['match-date'],
-            'slug' => 'HCEITC',
-        ]);
+        $match = new Match();
+        $match->date = $validatedData['match-date'];
+        $match->save();
 
-        $homeTeam = Participation::create([
-            'match_id' => $match->id,
-            'team_id' => $request['home-team'],
-            'goals' => $request['home-team-goals'],
-            'is_home' => 1,
-        ]);
+        $homeTeam = new Participation();
+        $homeTeam->match_id = $match->id;
+        $homeTeam->team_id = $validatedData['home-team'];
+        $homeTeam->goals = $validatedData['home-team-goals'];
+        $homeTeam->is_home = 1;
+        $homeTeam->save();
 
-        $awayTeam = Participation::create([
-            'match_id' => $match->id,
-            'team_id' => $request['away-team'],
-            'goals' => $request['away-team-goals'],
-            'is_home' => 0,
-        ]);
+        $awayTeam = new Participation();
+        $awayTeam->match_id = $match->id;
+        $awayTeam->team_id = $validatedData['away-team'];
+        $awayTeam->goals = $validatedData['away-team-goals'];
+        $awayTeam->is_home = 0;
+        $awayTeam->save();
+
+        $homeTeamSlug = Team::find($validatedData['home-team'])->slug;
+        $awayTeamSlug = Team::find($validatedData['away-team'])->slug;
+
+        $match->slug = $homeTeamSlug . $awayTeamSlug;
+        $match->save();
+
 
         return redirect(route('home_page'));
     }

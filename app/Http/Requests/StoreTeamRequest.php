@@ -24,8 +24,8 @@ class StoreTeamRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'string', 'unique:name', 'max:255'],
-            'slug' => ['required', 'string', 'unique:slug', 'max:3'],
+            'name' => ['required', 'string', 'unique:teams', 'max:100'],
+            'slug' => ['required', 'string', 'unique:teams', 'max:3'],
         ];
     }
 }

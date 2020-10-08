@@ -4,9 +4,9 @@
         @csrf
 
         <label for="match-date" class="d-block mb-1">Date du match</label>
-        <input type="datetime-local" id="match-date" name="match-date" placeholder="2020-04-10" class="w-100 mb-3">
+        <input type="text" id="match-date" name="match-date" placeholder="2020-04-10" class="w-100 mb-3">
         @error('match-date')
-            <p>
+            <p class="alert-danger">
                 {{ $message }}
             </p>
         @enderror
@@ -34,7 +34,7 @@
         <input type="text" id="home-team-goals" name="home-team-goals" class="w-100 mb-3">
         <br>
         @error('home-team-goals')
-            <p>
+            <p class="alert-danger">
                 {{ $message }}
             </p>
         @enderror
@@ -61,7 +61,7 @@
         <input type="text" id="away-team-goals" name="away-team-goals" class="mb-3 w-100 mb-4">
         <br>
         @error('away-team-goals')
-            <p>
+            <p class="alert-danger">
                 {{ $message }}
             </p>
         @enderror
