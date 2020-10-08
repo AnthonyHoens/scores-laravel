@@ -51,10 +51,41 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                    {{ __('Menu') }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <div class="mb-2">
+                                        <h2 class="dropdown-header text-uppercase">Utilisateur</h2>
+                                        <a href="#" class="dropdown-item">{{ \Illuminate\Support\Facades\Auth::user()->name }}</a>
+                                    </div>
+                                    <nav class="mb-2">
+                                        <h2 class="dropdown-header text-uppercase">Navigations</h2>
+                                        <ul class="list-unstyled">
+                                            <li>
+                                                <a href="{{ route('home_page') }}" class="dropdown-item">Accueil</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('team_page') }}" class="dropdown-item">Équipes</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+
+                                    @canany(['add_match', 'add_team'])
+                                        <nav class="mb-2">
+                                            <h2 class="dropdown-header text-uppercase">Administrations</h2>
+                                            <ul class="list-unstyled">
+                                                @can('add_match')
+                                                    <li><a href="{{ route('create_match') }}" class="dropdown-item">Ajouter un match</a></li>
+                                                @endcan
+                                                @can('add_team')
+                                                    <li><a href="{{ route('create_team') }}" class="dropdown-item">Ajouter une équipe</a></li>
+                                                @endcan
+                                            </ul>
+                                        </nav>
+                                    @endcanany
+
+                                    <p class="dropdown-header text-uppercase">Actions</p>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

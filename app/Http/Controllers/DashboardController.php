@@ -7,8 +7,9 @@ use App\Models\Match;
 use App\Models\Participation;
 use App\Models\Team;
 use App\Models\TeamStat;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use function Sodium\compare;
 
 class DashboardController extends Controller
 {
@@ -18,6 +19,9 @@ class DashboardController extends Controller
 
         $teamStatsOrder = $teamStatsTableRequest ? $teamStatsTableRequest: 'points';
         $matchOrder = $matchTableRequest ? $matchTableRequest : 'date';
+
+        $user = User::with('roles')
+            ->find(Auth::id());
 
         $teamStats = TeamStat::with('teams')
             ->orderByDesc('goals_difference')
@@ -29,6 +33,6 @@ class DashboardController extends Controller
         $matches = $matches->sortByDesc($matchOrder);
         $teamStats = $teamStats->sortByDesc($teamStatsOrder);
 
-        return view('dashboard.index', compact( 'matches', 'teamStats', 'teamStatsOrder', 'matchOrder'));
+        return view('dashboard.index', compact( 'matches', 'teamStats', 'teamStatsOrder', 'matchOrder', 'user'));
     }
 }

@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->id()->autoIncrement();
             $table->string('name')->default(null);
             $table->string('email')->default(null);
+            $table->string('image')->nullable();
             $table->string('password')->default(null);
             $table->timestamps();
         });

@@ -5,16 +5,16 @@
             <thead>
             <tr>
                 <th scope="col" class="pl-3">
-                    <a href="{{ route('home_page') }}/?s=name&m={{$matchOrder}}">Team</a>
+                    <a href="{{ route('home_page') }}/?s=name&m={{$matchOrder}}">Équipes</a>
                 </th>
-                <th scope="col"><a href="{{ route('home_page') }}/?s=games&m={{$matchOrder}}">Games</a></th>
+                <th scope="col"><a href="{{ route('home_page') }}/?s=games&m={{$matchOrder}}">Match joués</a></th>
                 <th scope="col"><a href="{{ route('home_page') }}/?s=points&m={{$matchOrder}}">Points</a></th>
-                <th scope="col"><a href="{{ route('home_page') }}/?s=wins&m={{$matchOrder}}">Wins</a></th>
-                <th scope="col"><a href="{{ route('home_page') }}/?s=looses&m={{$matchOrder}}">Looses</a></th>
-                <th scope="col"><a href="{{ route('home_page') }}/?s=draws&m={{$matchOrder}}">Draws</a></th>
-                <th scope="col"><a href="{{ route('home_page') }}/?s=goals_for&m={{$matchOrder}}">Goals For</a></th>
-                <th scope="col"><a href="{{ route('home_page') }}/?s=goals_against&m={{$matchOrder}}">Goals Against</a></th>
-                <th scope="col"><a href="{{ route('home_page') }}/?s=goals_difference&m={{$matchOrder}}">Goals Difference</a></th>
+                <th scope="col"><a href="{{ route('home_page') }}/?s=wins&m={{$matchOrder}}">Victoires</a></th>
+                <th scope="col"><a href="{{ route('home_page') }}/?s=looses&m={{$matchOrder}}">Défaites</a></th>
+                <th scope="col"><a href="{{ route('home_page') }}/?s=draws&m={{$matchOrder}}">Égalités</a></th>
+                <th scope="col"><a href="{{ route('home_page') }}/?s=goals_for&m={{$matchOrder}}">Goals marqués</a></th>
+                <th scope="col"><a href="{{ route('home_page') }}/?s=goals_against&m={{$matchOrder}}">Goals encaissés</a></th>
+                <th scope="col"><a href="{{ route('home_page') }}/?s=goals_difference&m={{$matchOrder}}">Différence de goals</a></th>
             </tr>
             </thead>
             <tbody>

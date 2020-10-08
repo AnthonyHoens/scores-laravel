@@ -1,25 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+    @auth()
+        <x-user-info-card :user="$user"></x-user-info-card>
+    @endauth
+
     <x-standings :teamStats="$teamStats" :matchOrder="$matchOrder"></x-standings>
 
     <x-match-played :matches="$matches" :teamStatsOrder="$teamStatsOrder"></x-match-played>
 
-    @canany(['add_match', 'add_team'])
-        <nav>
-            <h2>
-                Navigation d'administration
-            </h2>
-            <ul>
-                @can('add_match')
-                    <li><a href="{{ route('create_match') }}">Ajouter un match</a></li>
-                @endcan
-                @can('add_team')
-                    <li><a href="{{ route('create_team') }}">Ajouter une équipe</a></li>
-                @endcan
-            </ul>
-        </nav>
-    @endcanany
 @endsection
 
 
