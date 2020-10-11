@@ -4,21 +4,17 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class Standings extends Component
+class User extends Component
 {
-    public $teamStats;
-    public $matchOrder;
-    public $matches;
+    public $users;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($teamStats, $matchOrder, $matches)
+    public function __construct($users)
     {
-        $this->teamStats = $teamStats;
-        $this->matchOrder = $matchOrder;
-        $this->matches = $matches;
+        $this->users = $users;
     }
 
     /**
@@ -28,6 +24,6 @@ class Standings extends Component
      */
     public function render()
     {
-        return view('components.standings');
+        return view('components.user');
     }
 }

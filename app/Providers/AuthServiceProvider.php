@@ -7,6 +7,7 @@ use App\Models\Team;
 use App\Policies\MatchPolicy;
 use App\Policies\TeamPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
 class AuthServiceProvider extends ServiceProvider
@@ -40,9 +41,7 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('edit_team', function($user){
             return $user->isAdmin;
-        }) ;
+        });
 
-
-        //
     }
 }

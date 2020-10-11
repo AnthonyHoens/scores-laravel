@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    <x-team-show :team="$team"></x-team-show>
+    <x-team-show :team="$team" :teamMatches="$teamMatches"></x-team-show>
 @endsection

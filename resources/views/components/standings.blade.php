@@ -5,16 +5,16 @@
             <thead>
             <tr>
                 <th scope="col" class="pl-3">
-                    <a href="{{ route('home_page') }}/?s=name&m={{$matchOrder}}">Équipes</a>
+                    <a href="{{ route('home_page') }}/?s=name&m={{$matchOrder}}&page={{ $matches->currentPage() }}">Équipes</a>
                 </th>
-                <th scope="col"><a href="{{ route('home_page') }}/?s=games&m={{$matchOrder}}">Match joués</a></th>
-                <th scope="col"><a href="{{ route('home_page') }}/?s=points&m={{$matchOrder}}">Points</a></th>
-                <th scope="col"><a href="{{ route('home_page') }}/?s=wins&m={{$matchOrder}}">Victoires</a></th>
-                <th scope="col"><a href="{{ route('home_page') }}/?s=looses&m={{$matchOrder}}">Défaites</a></th>
-                <th scope="col"><a href="{{ route('home_page') }}/?s=draws&m={{$matchOrder}}">Égalités</a></th>
-                <th scope="col"><a href="{{ route('home_page') }}/?s=goals_for&m={{$matchOrder}}">Goals marqués</a></th>
-                <th scope="col"><a href="{{ route('home_page') }}/?s=goals_against&m={{$matchOrder}}">Goals encaissés</a></th>
-                <th scope="col"><a href="{{ route('home_page') }}/?s=goals_difference&m={{$matchOrder}}">Différence de goals</a></th>
+                <th scope="col"><a href="{{ route('home_page') }}/?s=games&m={{$matchOrder}}&page={{ $matches->currentPage() }}">Match joués</a></th>
+                <th scope="col"><a href="{{ route('home_page') }}/?s=points&m={{$matchOrder}}&page={{ $matches->currentPage() }}">Points</a></th>
+                <th scope="col"><a href="{{ route('home_page') }}/?s=wins&m={{$matchOrder}}&page={{ $matches->currentPage() }}">Victoires</a></th>
+                <th scope="col"><a href="{{ route('home_page') }}/?s=looses&m={{$matchOrder}}&page={{ $matches->currentPage() }}">Défaites</a></th>
+                <th scope="col"><a href="{{ route('home_page') }}/?s=draws&m={{$matchOrder}}&page={{ $matches->currentPage() }}">Égalités</a></th>
+                <th scope="col"><a href="{{ route('home_page') }}/?s=goals_for&m={{$matchOrder}}&page={{ $matches->currentPage() }}">Goals marqués</a></th>
+                <th scope="col"><a href="{{ route('home_page') }}/?s=goals_against&m={{$matchOrder}}&page={{ $matches->currentPage() }}">Goals encaissés</a></th>
+                <th scope="col"><a href="{{ route('home_page') }}/?s=goals_difference&m={{$matchOrder}}&page={{ $matches->currentPage() }}">Différence de goals</a></th>
             </tr>
             </thead>
             <tbody>

@@ -3,7 +3,7 @@
         <img src="{{ asset('images/profil/' . $user->image) }}" class="w-25 d-inline-block rounded-circle mr-3" alt="Image de profil de {{ $user->name }}">
         <div>
             <h1 class="d-inline-block mb-1">
-                {{ $user->name }}
+                <a href="{{ route('user_show', $user->slug) }}">{{ $user->name }}</a>
             </h1>
             <p class="font-italic d-inline-block">
                 {{ $user->email }}
@@ -41,6 +41,9 @@
                     </li>
                     <li>
                         <a href="{{ route('team_page') }}">Équipes</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('user_page') }}">Utilisateurs</a>
                     </li>
                     @canany(['add_match', 'add_team'])
                         @can('add_match')

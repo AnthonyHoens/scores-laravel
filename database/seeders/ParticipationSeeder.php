@@ -21,7 +21,8 @@ class ParticipationSeeder extends Seeder
 
         foreach ($teams as $team) {
             $homeTeam = $team;
-            $awayTeam = $teams[rand(0, count($teams))];
+            $awayTeam = $teams[$i =rand(0, count($teams))];
+
             $match = Match::create([
                 'date' => Carbon::now('Europe/Paris'),
                 'slug' => $homeTeam->slug . $awayTeam->slug,

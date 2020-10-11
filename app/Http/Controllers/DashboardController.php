@@ -28,9 +28,12 @@ class DashboardController extends Controller
             ->get();
 
         $matches = Match::with('teams')
-            ->get();
+            ->paginate(5);
 
-        $matches = $matches->sortByDesc($matchOrder);
+
+        $matches = $matches->fragment('matchPlayed')
+            ->appends(['m' => $matchOrder, 's'  => $teamStatsOrder]);
+
         $teamStats = $teamStats->sortByDesc($teamStatsOrder);
 
         return view('dashboard.index', compact( 'matches', 'teamStats', 'teamStatsOrder', 'matchOrder', 'user'));

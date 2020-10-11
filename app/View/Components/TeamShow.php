@@ -6,15 +6,17 @@ use Illuminate\View\Component;
 
 class TeamShow extends Component
 {
+    public $teamMatches;
     public $team;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($team)
+    public function __construct($team, $teamMatches)
     {
         $this->team = $team;
+        $this->teamMatches = $teamMatches;
     }
 
     /**

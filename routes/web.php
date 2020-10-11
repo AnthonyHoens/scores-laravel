@@ -17,6 +17,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [App\Http\Controllers\DashboardController::class, 'index'])
     ->name('home_page');
 
+Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])
+    ->name('user_page')
+    ->middleware('auth');
+
+Route::get('/users/{user:slug}', [App\Http\Controllers\UserController::class, 'show'])
+    ->name('user_show')
+    ->middleware('auth');
+
+Route::get('/users/{user:slug}/edit', [App\Http\Controllers\UserController::class, 'edit'])
+    ->name('user_edit')
+    ->middleware('auth');
 
 
 Route::post('/team', [\App\Http\Controllers\TeamController::class, 'store'])

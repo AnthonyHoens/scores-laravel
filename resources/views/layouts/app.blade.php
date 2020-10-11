@@ -57,7 +57,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <div class="mb-2">
                                         <h2 class="dropdown-header text-uppercase">Utilisateur</h2>
-                                        <a href="#" class="dropdown-item">{{ \Illuminate\Support\Facades\Auth::user()->name }}</a>
+                                        <a href="{{ route('user_show', \Illuminate\Support\Facades\Auth::user()->slug) }}" class="dropdown-item">{{ \Illuminate\Support\Facades\Auth::user()->name }}</a>
                                     </div>
                                     <nav class="mb-2">
                                         <h2 class="dropdown-header text-uppercase">Navigations</h2>
@@ -67,6 +67,9 @@
                                             </li>
                                             <li>
                                                 <a href="{{ route('team_page') }}" class="dropdown-item">Équipes</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('user_page') }}" class="dropdown-item">Utilisateurs</a>
                                             </li>
                                         </ul>
                                     </nav>
@@ -104,7 +107,7 @@
         </nav>
 
         <main class="py-4">
-            <div class="container">
+            <div class="container position-relative">
                 @yield('content')
             </div>
         </main>

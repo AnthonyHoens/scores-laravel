@@ -7,12 +7,27 @@
         @method('put')
 
         <label for="name">Nom</label>
+        @error('name')
+            <p class="alert-danger">
+                {{ $message }}
+            </p>
+        @enderror
         <input type="text" name="name" id="name" value="{{ $team->name }}" class="w-100 mb-3">
 
         <label for="slug">Slug</label>
+        @error('slug')
+            <p class="alert-danger">
+                {{ $message }}
+            </p>
+        @enderror
         <input type="text" name="slug" id="slug" value="{{ $team->slug }}" class="w-100 mb-3">
 
         <label for="img">Modifier l'image</label>
+        @error('img')
+            <p class="alert-danger">
+                {{ $message }}
+            </p>
+        @enderror
         <img src="{{ asset('images/small/'. $team->file_name) }}" alt="Logo de {{ $team->name }}">
         <input type="file" id="img" name="img" class="w-100 mb-3">
 
