@@ -6,7 +6,7 @@
                 <a href="{{ route('user_show', $user->slug) }}">{{ $user->name }}</a>
             </h1>
             <p>
-                {{ $user->email }}
+                {{ $user->emails }}
             </p>
             @if($user->roles)
                 <div>

@@ -6,7 +6,7 @@
                 <a href="{{ route('user_show', $user->slug) }}">{{ $user->name }}</a>
             </h1>
             <p class="font-italic d-inline-block">
-                {{ $user->email }}
+                {{ $user->emails }}
             </p>
         </div>
     </div>

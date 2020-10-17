@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Events\MatchCreated;
 use App\Http\Requests\StoreMatchRequest;
+use App\Mail\MatchAdded;
 use App\Models\Match;
 use App\Models\Participation;
 use App\Models\Team;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class MatchController extends Controller
 {
@@ -19,6 +20,8 @@ class MatchController extends Controller
 
     public function store(StoreMatchRequest $request) {
         $validatedData = $request->validated();
+
+        DB::transaction(function () use($validatedData) {
 
         $match = new Match();
         $match->date = $validatedData['match-date'];
@@ -44,7 +47,8 @@ class MatchController extends Controller
         $match->slug = $homeTeamSlug . $awayTeamSlug;
         $match->save();
 
-        event(MatchCreated::class);
+        event(new MatchCreated($match, request()->user()->emails));
+        });
 
         return redirect(route('home_page'));
     }

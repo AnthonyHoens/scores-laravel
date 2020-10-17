@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Models\Match;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -14,14 +15,17 @@ class MatchCreated
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    public $match;
+    public $email;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Match $match, string $email)
     {
-        //
+        $this->match = $match;
+        $this->email = $email;
     }
 
     /**

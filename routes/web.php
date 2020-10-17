@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/s', function () {
+
+});
 
 Route::get('/', [App\Http\Controllers\DashboardController::class, 'index'])
     ->name('home_page');

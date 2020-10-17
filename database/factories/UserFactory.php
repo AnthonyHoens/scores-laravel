@@ -26,7 +26,7 @@ class UserFactory extends Factory
         return [
             'name' => $name,
             'slug' => strtolower(preg_replace('#&([A-za-z])(?:acute|cedil|caron|circ|grave|orn|ring|slash|th|tilde|uml);#', '\1', str_replace(' ', '_', $name))),
-            'email' => $this->faker->unique()->safeEmail,
+            'emails' => $this->faker->unique()->safeEmail,
             'image' => $this->faker->imageUrl(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         ];

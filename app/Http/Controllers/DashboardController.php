@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Validator;
 class DashboardController extends Controller
 {
     public function index() {
+
         $teamStatsTableRequest = request('s');
         $matchTableRequest = request('m');
 

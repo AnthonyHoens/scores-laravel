@@ -5,9 +5,11 @@
             <thead>
             <tr>
                 <th scope="col" class="pl-3">
-                    <a href="{{ route('home_page') }}/?s=name&m={{$matchOrder}}&page={{ $matches->currentPage() }}">Équipes</a>
+                        <a href="{{ route('home_page') }}/?s=name&m={{$matchOrder}}&page={{ $matches->currentPage() }}">Équipes</a>
                 </th>
-                <th scope="col"><a href="{{ route('home_page') }}/?s=games&m={{$matchOrder}}&page={{ $matches->currentPage() }}">Match joués</a></th>
+                <th scope="col">
+                    <a href="{{ route('home_page') }}/?s=games&m={{$matchOrder}}&page={{ $matches->currentPage() }}">Match joués</a>
+                </th>
                 <th scope="col"><a href="{{ route('home_page') }}/?s=points&m={{$matchOrder}}&page={{ $matches->currentPage() }}">Points</a></th>
                 <th scope="col"><a href="{{ route('home_page') }}/?s=wins&m={{$matchOrder}}&page={{ $matches->currentPage() }}">Victoires</a></th>
                 <th scope="col"><a href="{{ route('home_page') }}/?s=looses&m={{$matchOrder}}&page={{ $matches->currentPage() }}">Défaites</a></th>
@@ -24,7 +26,12 @@
                             @if($stat->image)
                                 <img src="{{ asset('images/small/'. $stat->image) }}" class="py-2">
                             @endif
+                            @guest()
+                                {{ $stat->name }}
+                            @endguest
+                            @auth()
                                 <a href="/team/{{ $stat->slug }}">{{ $stat->name }}</a>
+                            @endauth
                         </td>
                         <td>{{ $stat->games }}</td>
                         <td>{{ $stat->points }}</td>

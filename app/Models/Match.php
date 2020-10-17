@@ -8,14 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Match extends Model
 {
     protected $fillable = ['date'];
+    protected $dates = ['date'];
 
     public function teams() {
         return $this->belongsToMany(Team::class, 'participations')->withPivot('goals', 'is_home');
     }
 
     public function getDateFormatAttribute() {
-        $date = Carbon::createFromFormat('Y-m-d H:i:s', $this->date)->locale('fr_FR');
-        return $date->isoFormat('LLLL');
+        return $this->date->isoFormat('LLLL');
     }
 
     public function getHomeTeamNameAttribute() {
